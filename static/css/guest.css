@@ -20,6 +20,7 @@ button.btn.btn-dark:hover {
 
 .card {
     border-radius: 20px;
+    margin-bottom: 20px;
 }
 .card-body {
     background: #43AAF6;
