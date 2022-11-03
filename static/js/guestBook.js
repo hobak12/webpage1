@@ -1,170 +1,201 @@
-let guestBook = {
-    num : null
-    ,postBox : null
-    ,updateStatus : false
+    let guestBook = {
+    num: null,
+    postBox: null,
+    updateStatus: false,
 
-    ,init : function(){
+    init: function () {
         this.settingList();
 
-        this.postBox = $('#postBox');
+        this.postBox = $("#postBox");
+    },
+    registEvent: function () {},
 
-    }
-    ,registEvent : function(){
-    }
-
-    ,settingList : function(){
+    settingList: function () {
         $.ajax({
-                type: 'GET',
-                url: '/guestBook/list',
-                data: {},
-                success: function (response) {
-                    let rows = JSON.parse(response['supports']);
-                    $('#cards-box').empty();
-                    for (let i = 0; i < rows.length; i++) {
-                        let oid = rows[i]['_id']['$oid'];
-                        let name = rows[i]['name'];
-                        let conents = rows[i]['contents'];
+        type: "GET",
+        url: "/guestBook/list",
+        data: {},
+        success: function (response) {
+            let rows = JSON.parse(response["supports"]);
+            $("#cards-box").empty();
+            for (let i = 0; i < rows.length; i++) {
+            let oid = rows[i]["_id"]["$oid"];
+            let name = rows[i]["name"];
+            let conents = rows[i]["contents"];
 
-
-                        let temp_html = `<div class="card" id="listCard${oid}">
-                                        <div class="card-body">
-                                            <blockquote class="blockquote mb-0">
-                                                <p>${conents}</p>
-                                                <footer class="blockquote-footer">${name}</footer>
-                                            </blockquote>
-                                             <button onclick="guestBook.openUpdateForm('${oid}')" type="button" class="btn btn-outline-dark">수정</button>
-                                             <button onclick="guestBook.deleteGuestBook('${oid}')" type="button" class="btn btn-outline-dark">삭제</button>
-                                        </div>
-                                    </div>`;
-                        $('#cards-box').append(temp_html);
-                    }
-                }
-        });
-    }
-
-    ,insertGuestBook : function(){
-            let _this = this;
-
-            if(confirm('등록하시겠습니까?')){
-                let name = $(this.postBox).find('input[name="guestBookName"]').val();
-                let contents = $(this.postBox).find('textarea[name="guestBookContents"]').val();
-
-                if (name == '' || typeof(name) == "undefined"){
-                    alert('닉네임을 입력해주세요');
-                    return false;
-                }
-
-                if (contents == '' || typeof(contents) == "undefined"){
-                    alert('내용을 작성해주세요');
-                    return false;
-                }
-
-            $.ajax({
-                   type: 'POST',
-                   url: '/guestBook/insert',
-                   data: {
-                    guestName: name,
-                    guestContents: contents
-                    },
-                    success: function (response) {
-                         alert(response['msg'])
-                        _this.settingList()
-                    }
-            });
-        }
-
-    }
-
-    ,updateGuestBook : function(){
-        let _this = this;
-
-        if( !this.updateStatus ){
-            if(confirm('변경하시겠습니까?')){
-                this.updateStatus = true;
-
-                let name = $(this.postBox).find('input[name="guestBookName"]').val();
-                let contents = $(this.postBox).find('textarea[name="guestBookContents"]').val();
-
-                if (name == '' || typeof(name) == "undefined"){
-                    alert('닉네임을 입력해주세요');
-                    return false;
-                }
-
-                if (contents == '' || typeof(contents) == "undefined"){
-                    alert('내용을 작성해주세요');
-                    return false;
-                }
-
-                $.ajax({
-                       type: 'POST',
-                       url: '/guestBook/update',
-                     data: {
-
-                        id : _this.num,
-                        guestName: name,
-                        guestContents: contents
-                     },
-                     success: function (response) {
-                             alert(response['msg']);
-                             _this.closeUpdateForm();
-                             _this.settingList();
-                     }
-                });
+            let temp_html = `<div class="card" id="listCard${oid}">
+                                                        <div class="card-body">
+                                                            <blockquote class="blockquote mb-0">
+                                                                <p class="nick_name">${conents}</p>
+                                                                <footer class="blockquote-footer">${name}</footer>
+                                                            </blockquote>
+                                                            <button onclick="guestBook.openUpdateForm('${oid}')" type="button" class="btn btn-outline-dark">수정</button>
+                                                            <button onclick="guestBook.deleteGuestBook('${oid}')" type="button" class="btn btn-outline-dark">삭제</button>
+                                                        </div>
+                                                    </div>`;
+            $("#cards-box").append(temp_html);
             }
+        },
+        });
+    },
+
+    insertGuestBook: function () {
+        let _this = this;
+
+        if (confirm("등록하시겠습니까?")) {
+        let name = $(this.postBox).find('input[name="guestBookName"]').val();
+        let contents = $(this.postBox)
+            .find('textarea[name="guestBookContents"]')
+            .val();
+
+        if (name == "" || typeof name == "undefined") {
+            alert("닉네임을 입력해주세요");
+            return false;
         }
 
-    }
+        if (contents == "" || typeof contents == "undefined") {
+            alert("내용을 작성해주세요");
+            return false;
+        }
 
-    ,deleteGuestBook : function(num){
+        $.ajax({
+            type: "POST",
+            url: "/guestBook/insert",
+            data: {
+            guestName: name,
+            guestContents: contents,
+            },
+            success: function (response) {
+            alert(response["msg"]);
+            _this.settingList();
+            },
+        });
+        }
+    },
+
+    updateGuestBook: function () {
         let _this = this;
-        if(confirm('삭제하시겠습니까?')){
+
+        if (!this.updateStatus) {
+        if (confirm("변경하시겠습니까?")) {
+            this.updateStatus = true;
+
+            let name = $(this.postBox).find('input[name="guestBookName"]').val();
+            let contents = $(this.postBox)
+            .find('textarea[name="guestBookContents"]')
+            .val();
+
+            if (name == "" || typeof name == "undefined") {
+            alert("닉네임을 입력해주세요");
+            return false;
+            }
+
+            if (contents == "" || typeof contents == "undefined") {
+            alert("내용을 작성해주세요");
+            return false;
+            }
+
             $.ajax({
-                type: 'POST',
-                url: '/guestBook/delete',
-                data: {
-                    id: num,
-                },
-                success: function (response) {
-                    alert(response['msg'])
-                    _this.settingList();
-                }
+            type: "POST",
+            url: "/guestBook/update",
+            data: {
+                id: _this.num,
+                guestName: name,
+                guestContents: contents,
+            },
+            success: function (response) {
+                alert(response["msg"]);
+                _this.closeUpdateForm();
+                _this.settingList();
+            },
             });
         }
-    }
+        }
+    },
+
+    deleteGuestBook: function (num) {
+        let _this = this;
+        if (confirm("삭제하시겠습니까?")) {
+        $.ajax({
+            type: "POST",
+            url: "/guestBook/delete",
+            data: {
+            id: num,
+            },
+            success: function (response) {
+            alert(response["msg"]);
+            _this.settingList();
+            },
+        });
+        }
+    },
 
     //변경 창 세팅
-    ,openUpdateForm : function(num){
+    openUpdateForm: function (num) {
         this.num = num;
-        let target = $('#listCard' + num);
-        let targetName = $(target).find('footer').text();
-        let targetContents = $(target).find('p').text();
-        
-        $(this.postBox).find('> p').text('수정 창');
+        let target = $("#listCard" + num);
+        let targetName = $(target).find("footer").text();
+        let targetContents = $(target).find("p").text();
+
+        $(this.postBox).find("> p").text("수정 창");
         $(this.postBox).find('input[name="guestBookName"]').val(targetName);
-        $(this.postBox).find('textarea[name="guestBookContents"]').val(targetContents);
-        $(this.postBox).find('button').attr('onclick', 'guestBook.updateGuestBook()');
-        $(this.postBox).find('button').text('방명록 수정');
-    }
+        $(this.postBox)
+        .find('textarea[name="guestBookContents"]')
+        .val(targetContents);
+        $(this.postBox)
+        .find("button")
+        .attr("onclick", "guestBook.updateGuestBook()");
+        $(this.postBox).find("button").text("방명록 수정");
+    },
 
     //변경 창 닫기
-    ,closeUpdateForm : function(){
-        this.num = null
-        $(this.postBox).find('> p').text('등록 창');
-        $(this.postBox).find('input[name="guestBookName"]').val('');
-        $(this.postBox).find('textarea[name="guestBookContents"]').val('');
-        $(this.postBox).find('button').attr('onclick', 'guestBook.insertGuestBook()');
-        $(this.postBox).find('button').text('방명록 남기기');
+    closeUpdateForm: function () {
+        this.num = null;
+        $(this.postBox).find("> p").text("등록 창");
+        $(this.postBox).find('input[name="guestBookName"]').val("");
+        $(this.postBox).find('textarea[name="guestBookContents"]').val("");
+        $(this.postBox)
+        .find("button")
+        .attr("onclick", "guestBook.insertGuestBook()");
+        $(this.postBox).find("button").text("방명록 남기기");
+    },
+
+    removeEvent: function () {},
+    destroy: function () {},
+    };
+
+    // 파도 애니메이션
+    const svgDraw = function (el, cor, sp) {
+    const path = document.querySelector(el);
+    let speed = sp;
+    let offset = speed;
+    let color = cor;
+
+    set();
+
+    function set() {
+        path.style.stroke = color;
+        path.style.strokeWidth = 3;
+        path.style.strokeDasharray =
+        path.getTotalLength() + "," + path.getTotalLength();
+        path.style.strokeDashoffset = path.getTotalLength();
+
+        window.requestAnimationFrame(draw.bind(this));
     }
 
-    ,removeEvent : function(){
+    function draw() {
+        if (speed < path.getTotalLength()) {
+        path.style.strokeDashoffset = path.getTotalLength() - speed;
 
+        window.requestAnimationFrame(draw.bind(this));
+        speed = speed + offset;
+        } else if (speed > path.getTotalLength()) {
+        path.style.fill = color;
+        }
     }
-    ,destroy: function(){
+    };
+    svgDraw("#waves_svg path", "#5000ca", 30);
 
-    }
-}
-
-
-$(document).ready(function () {
+    $(document).ready(function () {
     guestBook.init();
-});
+    });
