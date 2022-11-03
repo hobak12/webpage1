@@ -161,7 +161,7 @@
     },
 
     removeEvent: function () {},
-    destroy: function () {},
+    destroy: function () {}
     };
 
     // 파도 애니메이션
