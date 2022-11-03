@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Doja Cat Fan Book" />
+    <meta property="og:description" content="leave your supporting comments." />
+    <meta property="og:image" content="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdi8QuP%2FbtrOkdpti7F%2FFIGsll9PpkjrH3fOJMSqc0%2Fimg.jpg" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/guestBook.js"></script>
+
+    <title>바다를 いい</title>
+    <style>
+        * {
+            font-family: 'Noto Serif KR', serif;
+        }
+
+        .mytitle {
+            color: white;
+
+            width: 100%;
+            height: 300px;
+
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://a.cdn-hotels.com/gdcs/production18/d1475/81f80bac-e382-4f0d-8dd2-e89ab44ee92c.jpg?impolicy=fcrop&w=1600&h=1066&q=medium");
+            background-size: cover;
+            background-position: center 20%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mypost {
+            padding: 20px;
+            margin: 20px auto 20px auto;
+            width: 500px;
+            max-width: 95%;
+            box-shadow: 0px 0px 3px 0px black;
+
+
+        }
+        .mypost1 {
+            padding: 20px;
+            margin: 20px auto 20px auto;
+            width: 500px;
+            max-width: 95%;
+            box-shadow: 0px 0px 3px 0px black;
+            display: none;
+
+
+        }
+
+        .mycard {
+            width: 95%;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        /*.mycard > .card {*/
+        /*    margin-top: 10px;*/
+        /*    margin-bottom: 10px;*/
+        /*}*/
+
+        .mypost > button {
+            margin-top: 20px;
+        }
+
+        .mytemp {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+
+        <div class="mytitle">
+            <h1>바다를 いい<h1/>
+                <p class="mytemp">현재기온: <span id="temp"></span>도</p>
+        </div>
+        <div class="mypost" id="postBox">
+            <p>등록 창</p>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="guestBookName" id="guestBookName" placeholder="홍길동">
+                <label for="guestBookName">닉네임</label>
+            </div>
+            <div class="form-floating">
+                            <textarea class="form-control" placeholder="내용을 작성해주세요" id="guestBookContents" name="guestBookContents"
+                                      style="height: 100px"></textarea>
+                <label for="guestBookContents">내용</label>
+            </div>
+            <button type="button" class="btn btn-dark" onclick="guestBook.insertGuestBook()">방명록 남기기</button>
+        </div>
+        <div class="mycard" id="cards-box">
+        </div>
+</body>
+</html>
