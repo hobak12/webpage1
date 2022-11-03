@@ -81,7 +81,7 @@
             // "fil"아이디에 포함된 모든 문자열의 입력값을 value에 넣어준다. 쉽게 보면 글검색창에 단어를 입력시 value에 넣어준다
             // 라고 생각하면됨
 
-            item = document.getElementsByClassName("item");
+            item = document.getElementsByClassName("blockquote");
             // "item"클래스, 즉 이미 있는 글내용과 닉네임이 있는 클래스에 포함된 모든 문자열을 item에 넣어준다.
 
             for (i = 0; i < item.length; i++) {
@@ -89,7 +89,7 @@
 
                 contents = item[i].getElementsByClassName("contents");
                 // 각 아이템 배열에서 클래스 contents, 즉 글내용 부분을 담는다
-                nick = item[i].getElementsByClassName("nick");
+                nick = item[i].getElementsByClassName("blockquote-footer");
                 // 각 아이템 배열에서 클래스 nick, 즉 닉네임 부분을 담는다
                 if (contents[0].innerHTML.indexOf(value) > -1 ||
                     nick[0].innerHTML.indexOf(value) > -1 ) {
