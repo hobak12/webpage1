@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Doja Cat Fan Book"/>
+    <meta property="og:description" content="leave your supporting comments."/>
+    <meta property="og:image"
+          content="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdi8QuP%2FbtrOkdpti7F%2FFIGsll9PpkjrH3fOJMSqc0%2Fimg.jpg"/>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+
+
+<!--    위의 스크립트 및 링크는 선형님꺼 index.html 그대로 붙였습니다-->
+
+    <title>바다를 いい</title>
+
+    <style>
+        .searchbox {
+            width: 90%;
+            margin: 10px auto;
+        }
+
+
+        .header {
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://a.cdn-hotels.com/gdcs/production18/d1475/81f80bac-e382-4f0d-8dd2-e89ab44ee92c.jpg?impolicy=fcrop&w=1600&h=1066&q=medium");
+            background-size: cover;
+            background-position: center;
+
+            overflow: hidden;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            text-transform: uppercase;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+
+        #fil {
+            border: none;
+            padding: 6px;
+            font-size: 18px;
+            width: 80%;
+            border-radius: 6px;
+        }
+        #fil:focus {
+            outline: none;
+        }
+
+
+        .item {
+            margin: 20px 0 20px 0;
+        }
+        .nick {
+            font-size: 14px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .contents {
+            font-size: 17px;
+            font-weight: 470;
+        }
+
+    </style>
+
+    <script>
+        function filter() {
+
+            let value, contents, nick, item, i;
+
+            value = document.getElementById("fil").value;
+            // "fil"아이디에 포함된 모든 문자열의 입력값을 value에 넣어준다. 쉽게 보면 글검색창에 단어를 입력시 value에 넣어준다
+            // 라고 생각하면됨
+
+            item = document.getElementsByClassName("item");
+            // "item"클래스, 즉 이미 있는 글내용과 닉네임이 있는 클래스에 포함된 모든 문자열을 item에 넣어준다.
+
+            for (i = 0; i < item.length; i++) {
+                // item에는 item[0], item[1], item[2] 현재 이렇게 담겨져있다.
+
+                contents = item[i].getElementsByClassName("contents");
+                // 각 아이템 배열에서 클래스 contents, 즉 글내용 부분을 담는다
+                nick = item[i].getElementsByClassName("nick");
+                // 각 아이템 배열에서 클래스 nick, 즉 닉네임 부분을 담는다
+                if (contents[0].innerHTML.indexOf(value) > -1 ||
+                    nick[0].innerHTML.indexOf(value) > -1 ) {
+                    // innerHTML은 HTML의 컨텐츠, 즉 내용에 접근할 수 있는 변수이고
+                    // indexOf()는 괄호안 값 문자열의 위치가 0,1,2,3,4... 인지 반환, 만약 없으면 -1을 반환한다.
+
+                    //만약 첫번째 글내용에 HTML의 컨텐츠값인 value(이건 검색창에서 입력한 문자열)가 존재하거나
+                    //|| 혹은 첫번째 닉네임에 HTML의 컨텐츠값인 value(이건 검색창에서 입력한 문자열)이 존재할경우
+
+                    item[i].style.display = "block";
+                    // 지금 전체 글내용중에서 해당 번째의 글내용을 보여준다
+                } else {
+                    item[i].style.display = "none";
+                    // 지금 전체 글내용중에서 해당 번째의 글내용을 보여주지 않는다.
+                }
+            }
+        }
+    </script>
+
+<body>
+<div class="searchbox">
+    <div class="header">
+        <h1>방명록 글 검색</h1>
+        <input onkeyup="filter()" type="text" id="fil" placeholder="검색할 닉네임 혹은 글내용을 입력하세요">
+    </div>
+<!-- 여기는 onkeyup 즉, 키보드를 두드릴때 마다 filter()함수를 매번 실행한다.-->
+
+
+    <div class="container">
+        <div class="item">
+            <span class="contents">우리는 왜 바다를 사랑하나? 그것은 우리로 하여금 우리가 좋아하는 것들을 생각하게 만드는 어떤 강력한 힘을 가지고 있기 때문이다.</span><p>
+            <span class="nick">- 로버트 헨리</span>
+        </div>
+
+        <div class="item">
+            <span class="contents">아무리 멀리 떠밀리더라도 해안가에 입맞추기를 멈추지 않는 바다, 이보다 아름다운 것은 없다.</span><p>
+            <span class="nick">- 새라 카이</span>
+        </div>
+
+        <div class="item">
+            <span class="contents">바다는 마음을 흔들어 놓고 상상력에 영감을 더하며, 영혼에게 영원한 기쁨을 가져다 준다.</span><p>
+            <span class="nick">- 로버트 와일런</span>
+        </div>
+    </div>
+<!--    여기는 실제 글내용(contents) 및 닉네임(nick)-->
+
+</div>
+</body>
+</html>
