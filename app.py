@@ -17,7 +17,7 @@ guestBook = db.collection['guestBook']
 
 # 메인페이지 연결
 @app.route('/')
-def home(): return render_template('index.html')
+def home(): return render_template('index.html');
 
 
 # 방명록페이지 연결
