@@ -15,6 +15,8 @@
             crossorigin="anonymous"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="../static/js/common.js"></script>
+    <script type="text/javascript" src="../static/js/guestBook.js"></script>
 
     <title>바다를 いい</title>
     <style>
@@ -64,10 +66,10 @@
             margin: auto;
         }
 
-        .mycard > .card {
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
+        /*.mycard > .card {*/
+        /*    margin-top: 10px;*/
+        /*    margin-bottom: 10px;*/
+        /*}*/
 
         .mypost > button {
             margin-top: 20px;
@@ -77,99 +79,6 @@
             font-size: 20px;
         }
     </style>
-    <script>
-        $(document).ready(function () {
-            listing();
-        });
-
-        function listing() {
-            $.ajax({
-                type: 'GET',
-                url: '/fan',
-                data: {},
-                success: function (response) {
-                    console.log(response)
-                    let rows = response['supports']
-                    for (let i = 0; i < rows.length; i++) {
-                        let name = rows[i]['name']
-                        let support = rows[i]['support']
-                        let num = rows[i]['num']
-                        let temp_html = `
-                                                            <div class="card">
-                                        <div class="card-body">
-                                            <blockquote class="blockquote mb-0">
-                                                <p>${support}</p>
-                                                <footer class="blockquote-footer">${name}</footer>
-                                            </blockquote>
-                                             <button onclick="open_box()" type="button" class="btn btn-outline-dark">수정</button>
-                                             <button onclick="empty(${num})" type="button" class="btn btn-outline-dark">삭제</button>
-                                        </div>
-                                    </div>
-                                `
-                        $('#cards-box').append(temp_html)
-                    }
-                }
-            })
-        }
-
-
-        function posting() {
-            let support = $('#floatingTextarea2').val()
-            let name = $('#floatingInput').val()
-
-            $.ajax({
-                type: 'POST',
-                url: '/fan',
-                data: {
-                    support_give: support,
-                    name_give: name,
-                },
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.reload()
-                }
-            });
-        }
-
-            function empty(num) {
-            $.ajax({
-                type: 'POST',
-                url: '/fan/delete',
-                data: {
-                    num_give: num,
-                },
-                success: function (response) {
-                    alert(response['msg'])
-                    window.location.reload()
-                }
-            });
-        }
-
-
-        $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: "http://spartacodingclub.shop/sparta_api/weather/busan",
-                data: {},
-                success: function (response) {
-                    $('#temp').text(response['temp'])
-                }
-            })
-        });
-
-
-          function open_box(){
-            $('#post-box').show()
-        };
-        function close_box(){
-            $('#post-box').hide()
-        };
-
-
-
-    </script>
-
-
 </head>
 
 
@@ -179,43 +88,20 @@
             <h1>바다를 いい<h1/>
                 <p class="mytemp">현재기온: <span id="temp"></span>도</p>
         </div>
-
-
-        <div class="mypost">
+        <div class="mypost" id="postBox">
+            <p>등록 창</p>
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">닉네임</label>
+                <input type="text" class="form-control" name="guestBookName" id="guestBookName" placeholder="홍길동">
+                <label for="guestBookName">닉네임</label>
             </div>
             <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+                            <textarea class="form-control" placeholder="내용을 작성해주세요" id="guestBookContents" name="guestBookContents"
                                       style="height: 100px"></textarea>
-                <label for="floatingTextarea2">응원댓글</label>
+                <label for="guestBookContents">내용</label>
             </div>
-
-            <button onclick="posting()" type="button" class="btn btn-dark">응원 남기기</button>
+            <button type="button" class="btn btn-dark" onclick="guestBook.insertGuestBook()">방명록 남기기</button>
         </div>
-
-
         <div class="mycard" id="cards-box">
-
-
         </div>
-
-
-  <div class="mypost1" id="post-box">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput1" placeholder="name@example.com">
-                <label for="floatingInput1">닉네임</label>
-            </div>
-            <div class="form-floating">
-                            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea3"
-                                      style="height: 100px"></textarea>
-                <label for="floatingTextarea3">응원댓글</label>
-            </div>
-
-            <button onclick="close_box()" type="button" class="btn btn-dark">확인</button>
-        </div>
-
-
 </body>
 </html>

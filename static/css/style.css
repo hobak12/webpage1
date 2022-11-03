@@ -63,7 +63,7 @@ body {
 #main_banner .imgBox {
     width: 50%;
     height: 450px;
-    background: url(../static/image/main_banner.jpg);
+    background: url(.././static/image/main_banner.jpg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
@@ -127,7 +127,7 @@ body {
     margin-bottom: 50px;
 }
 #introduce .pic {
-    background-image: url(../static/image/main_banner.jpg);
+    background-image: url(.././static/image/main_banner.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -186,7 +186,7 @@ body {
 #promise .imgBox {
     width: 50%;
     height: 300px;
-    background-image: url(../static/image/rule.jpg);
+    background-image: url(.././static/image/rule.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -206,7 +206,7 @@ body {
     max-width: 1080px ;
     width: 100%;
     height: 350px;
-    background-image: url(../static/image/guest_banner.jpg);
+    background-image: url(.././static/image/guest_banner.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
