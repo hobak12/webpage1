@@ -1,0 +1,294 @@
+body {
+    background: rgba(3, 120, 166, .8); 
+    color: #fff;
+    letter-spacing: -0.01em;
+}
+
+.title {
+    font-size: 28px;
+}
+
+.inner {
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.name {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.text {
+    line-height: 1.75;
+}
+
+.mbti, .habby {
+    color: #000;
+    font-size: 18px;
+}
+
+/* #Header */
+#header {
+    text-align: center;
+}
+
+#header h1 {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    position: relative;
+    font-size: 42px;
+}
+#header h1::after {
+    content: "いい조";
+    position: absolute;
+    bottom: 5px;
+    margin-left: 15px;
+    font-size: 14px;
+}
+#header p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* #main_banner */
+#main_banner .imgBox {
+    width: 50%;
+    height: 450px;
+    background: url(../templates/image/main_banner.jpg);
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 100px;
+}
+
+/* #team_introduce */
+#team_introduce {
+    text-align: center;
+    position: relative;
+}
+#team_introduce::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -500px;
+    width: 1000px;
+    height: 1000px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+#team_introduce h4 {
+    margin-bottom: 20px;
+}
+
+#team_introduce p {
+    line-height: 2.25;
+    padding-bottom: 100px;
+}
+
+/* #introduce*/
+#introduce .inner {
+    width: 1080px;
+    position: relative;
+}
+#introduce::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: -400px;
+    width: 700px;
+    height: 700px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    z-index: -1;
+}
+#introduce .card {
+    position: relative;
+    padding-bottom: 70px;
+}
+#introduce .card:last-child {
+    padding-bottom: 100px;
+}
+#introduce h4 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+#introduce .pic {
+    background-image: url(../templates/image/main_banner.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    width: 300px;
+    height: 300px;
+    filter: brightness(.7);
+    transition-duration: .3s;
+}
+#introduce .pic:hover {
+    box-shadow: 0px 0px 10px #fff;
+    filter: brightness(1);
+}
+#introduce .text {
+    position: absolute;
+    top: 10%;
+    left: 40%;
+}
+#introduce .text p:nth-of-type(2) {
+    width: 620px;
+    max-width: 100%;
+}
+
+/* #promise */
+#promise {
+    position: relative;
+    padding-bottom: 100px;
+}
+#promise::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -50px;
+    width: 42%;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 30px;
+    background-color: #333;
+    z-index: -1;
+}
+#promise .flex {
+    justify-content: center;
+}
+#promise .flex.inner > div {
+    margin-right: 50px;
+}
+#promise .title {
+    margin-bottom: 25px;
+}
+#promise ul li {
+    margin-bottom: 5px
+}
+
+#promise .imgBox {
+    width: 50%;
+    height: 300px;
+    background-image: url(../templates/image/rule.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    top: 0;
+    left: 95px;
+    padding-bottom: 100px;
+}
+
+/* #guest_book */
+#guest_book h4 {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+#guest_book .imgBox {
+    max-width: 1080px ;
+    width: 100%;
+    height: 350px;
+    background-image: url(../templates/image/guest_banner.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+#guest_book .btn {
+    display: block;
+    width: 150px;
+    height: 50px;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    color: #333;
+    font-size: 20px;
+    text-align: center;
+    line-height: 2.45;
+    border-radius: 20px;
+    transition-duration: .3s;
+}
+#guest_book .btn:hover {
+    background: #000;
+    color: #fff;
+}
+
+/* #footer */
+#footer {
+    border-top: 1px solid #fff;
+}
+
+#footer ul {
+    margin-bottom: 50px;
+    max-width: 1080px;
+    width: 100%;
+}
+#footer ul li {
+    font-size: 18px;
+    padding-top: 30px;
+}
+#footer ul li:nth-of-type(1) {
+    margin-left: 20px;
+}
+#footer ul li:nth-of-type(5) {
+    margin-right: 20px;
+}
+#footer .team {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+
+/* 반응형 1148px */
+
+@media all and (max-width : 1148px) {
+    #introduce .inner {
+        width: 100%;
+    }
+    #introduce .pic {
+        margin-left: inherit;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    #introduce .text {
+        position: static;
+        text-align: center;
+        width: 100%;
+    }
+    #introduce .card.flex {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    #introduce .text p:nth-of-type(2) {
+        text-align: center;
+        width: inherit;
+        max-width: inherit;
+    }
+    #team_introduce::after {
+        width: 500px;
+        height: 500px;
+        top: 300px;
+        left: -20%;
+    }
+}
