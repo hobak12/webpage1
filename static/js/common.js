@@ -7,5 +7,4 @@ $(document).ready(function () {
            $('#temp').text(response['temp'])
           }
       });
-      console.log(1111);
 });
