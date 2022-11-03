@@ -52,7 +52,7 @@ button.btn.btn-dark:hover {
 /* 파도 위치 조정 및 애니메이션 */
 #waves_svg {
     position: relative;
-    bottom: -70px;
+    bottom: -21vh;
     left: 0;
 }
 #waves_svg path {

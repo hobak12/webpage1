@@ -1,4 +1,5 @@
 body {
+    position: relative;
     background: rgba(3, 120, 166, .8); 
     color: #fff;
     letter-spacing: -0.01em;
@@ -42,16 +43,29 @@ body {
 }
 
 #header h1 {
+    position: relative;
     margin-top: 50px;
     margin-bottom: 30px;
-    position: relative;
     font-size: 42px;
+    width: 100%;
 }
 #header h1::after {
-    content: "いい조";
+    content: '';
     position: absolute;
-    bottom: 5px;
-    margin-left: 15px;
+    top: -70px;
+    left: 30px;
+    width: 400px;
+    height: 400px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    filter: blur(5px);
+}
+#header h1::before {
+    content: "いい조";
+    position: static;
+    bottom: 0;
+    right: 0;
+    display: block;
     font-size: 14px;
 }
 #header p {
@@ -88,6 +102,7 @@ body {
     height: 1000px;
     border: 1px solid #fff;
     border-radius: 50%;
+    filter: blur(1px);
 }
 
 #team_introduce h4 {
@@ -114,6 +129,7 @@ body {
     border: 1px solid #fff;
     border-radius: 50%;
     z-index: -1;
+    filter: blur(3px);
 }
 #introduce .card {
     position: relative;
@@ -127,7 +143,6 @@ body {
     margin-bottom: 50px;
 }
 #introduce .pic {
-    background-image: url(../../static/image/main_banner.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -136,12 +151,29 @@ body {
     max-height: 100%;
     width: 300px;
     height: 300px;
-    filter: brightness(.7);
+    filter: brightness(.8);
     transition-duration: .3s;
+}
+#introduce .flex.card:nth-of-type(1) .pic{
+    background-image: url(../../static/image/Parkjaehyun.jpg);
+}
+#introduce .flex.card:nth-of-type(2) .pic{
+    background-image: url(../../static/image/Kimsunhyung.jpg);
+}
+#introduce .flex.card:nth-of-type(3) .pic{
+    background-image: url(../../static/image/Parkhwuiin.jpg);
+    background-position: center bottom;
+}
+#introduce .flex.card:nth-of-type(4) .pic{
+    background-image: url(../../static/image/narita.jpg);
+}
+#introduce .flex.card:nth-of-type(5) .pic{
+    background-image: url(../../static/image/Jungmin.jpg);
 }
 #introduce .pic:hover {
     box-shadow: 0px 0px 10px #fff;
-    filter: brightness(1);
+    filter: brightness(1.25);
+    scale: 1.05;
 }
 #introduce .text {
     position: absolute;
@@ -258,6 +290,47 @@ body {
     margin-bottom: 100px;
 }
 
+/* #top_btn */
+#top_btn {
+    position: fixed;
+    bottom: 80px;
+    right: 60px;
+    padding: 30px;
+    background-color: gray;
+    border-radius: 20px;
+    transition-duration: .3s;
+}
+#top_btn::after {
+    content: '';
+    position: absolute;
+    top: 22%;
+    left: 46.5%;
+    background-color: #fff;
+}
+#top_btn::before {
+    content: '';
+    position: absolute;
+    top: 22%;
+    right: 46.5%;
+    background-color: #fff;
+}
+#top_btn:hover {
+    background-color: #fff;
+    color: #333;
+}
+#top_btn:hover::before, #top_btn:hover::after {
+    background-color: #333;
+}
+#top_btn:hover::before {
+    transform: rotate(-45deg);
+    width: 20px;
+    height: 2px;
+}
+#top_btn:hover::after {
+    transform: rotate(45deg);
+    width: 20px;
+    height: 2px;
+}
 
 /* 반응형 1148px */
 

@@ -230,7 +230,6 @@ const svgDraw = function (el, cor, sp) {
     }
 };
 
-
 $(document).ready(function () {
     guestBook.init();
     svgDraw("#waves_svg path", "#5000ca", 30);
