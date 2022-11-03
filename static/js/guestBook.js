@@ -110,6 +110,7 @@
             success: function (response) {
             alert(response["msg"]);
             _this.settingList();
+            window.location.reload();
             },
         });
         }
@@ -149,6 +150,7 @@
                 alert(response["msg"]);
                 _this.closeUpdateForm();
                 _this.settingList();
+                window.location.reload();
             },
             });
         }
@@ -167,6 +169,7 @@
             success: function (response) {
             alert(response["msg"]);
             _this.settingList();
+            window.location.reload();
             },
         });
         }
