@@ -63,7 +63,7 @@ body {
 #main_banner .imgBox {
     width: 50%;
     height: 450px;
-    background: url(../static/image/main_banner.jpg);
+    background: url(../../static/image/main_banner.jpg);
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: cover;
